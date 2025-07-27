@@ -1,0 +1,43 @@
+client any {
+  ipaddr = 0.0.0.0/0
+  secret = ${RADIUS_SECRET}
+  shortname = anyclient
+  nastype = other
+
+  # 改ざん検出のための HMAC-SHA1 チェックサムを使う
+  # no の場合は、チェックサムが送信された場合拒否される
+  # 古い機器では対応していないことがある。
+  require_message_authenticator = no
+
+  limit {
+    max_connections = 100
+    lifetime = 3600
+    idle_timeout = 30
+    max_requests = 0
+  }
+  # クライアントの IP アドレスが変更された場合に再認証を要求する
+  require_message_authenticator = true
+  require_client_ip = yes
+}
+
+# PaloAlto専用設定（よりセキュアな設定のために分離）
+client paloalto {
+  ipaddr = 192.168.0.0/24  # PaloAltoのネットワーク範囲に調整してください
+  secret = ${RADIUS_SECRET}
+  shortname = paloalto
+  nastype = paloalto
+
+  # PaloAltoの場合、Message-Authenticatorは必須
+  require_message_authenticator = yes
+
+  limit {
+    max_connections = 50
+    lifetime = 0
+    idle_timeout = 60
+    max_requests = 0
+  }
+  
+  # PaloAltoの場合、IPアドレス検証を有効化
+  require_message_authenticator = true
+  require_client_ip = yes
+}

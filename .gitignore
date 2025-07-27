@@ -1,0 +1,102 @@
+# Environment files with sensitive data
+.env
+.env.local
+.env.production
+.env.staging
+
+# Generated Docker Compose files
+docker-compose.debug.yml
+
+# Docker volumes and data
+postgresql/data/
+logs/
+
+# PrivacyIDEA runtime data
+privacyidea/data/
+!privacyidea/data/.gitkeep
+
+# SSL Certificates and Keys
+*.key
+*.crt
+*.pem
+nginx/certs/
+freeradius/certs/
+privacyidea/certs/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+cookies.txt
+
+# Debug tools specific
+debug_tools/logs/
+
+# Backup directories
+backups/
+
+
+# Database dumps and backups
+*.sql
+*.dump
+
+# Log files
+*.log
+
+# Archive files
+*.tar
+*.tar.gz
+*.zip
+*.rar
+
+# Python cache files (if any Python scripts are added)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Certificate signing requests
+*.csr
+
+# PKCS#12 files
+*.p12
+*.pfx
+
+# Personal/custom configurations
+config/local/
+secrets/
+private/
+personal/
+notes/
+scratch/
+
+# Test coverage reports
+coverage/
+*.cover
+.coverage
+
+# Documentation builds
+docs/_build/
+
+# Git merge artifacts
+*.orig
